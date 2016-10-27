@@ -108,7 +108,7 @@ mod.directive 'infiniteScroll', ['$rootScope', '$window', '$interval', 'THROTTLE
       if unregisterEventListener?
         unregisterEventListener()
         unregisterEventListener = null
-      if checkInterval 
+      if checkInterval
         $interval.cancel checkInterval
 
     # infinite-scroll-distance specifies how close to the bottom of the page
@@ -180,6 +180,7 @@ mod.directive 'infiniteScroll', ['$rootScope', '$window', '$interval', 'THROTTLE
         newContainer = angular.element newContainer[newContainer.length - 1]
       else if typeof newContainer == 'string'
         newContainer = angular.element document.querySelector newContainer
+        if newContainer.length == 0 then return
 
       if newContainer?
         changeContainer newContainer
